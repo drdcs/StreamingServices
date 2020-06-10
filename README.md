@@ -6,7 +6,7 @@
 # Spark Structured Streaming -> use spark to read the format as kafka.
 # Jdbc Load of events and Venue details -> Load a SQL server Table for specific information.
 
-##What you will learn ?##
+Markup :  ## What you will learn ?##
 
 * Design a kafka producer via pykafka.
 * How to design a case class for complex json.
