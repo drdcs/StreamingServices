@@ -1,19 +1,17 @@
 # Spark Streaming example
 ## Use Case:
-```
 
-# Kafka producer -> reads the information from meetup group meetup.com
-# Spark Structured Streaming -> use spark to read the format as kafka.
-# Jdbc Load of events and Venue details -> Load a SQL server Table for specific information.
+_Kafka producer -> reads the information from meetup group meetup.com
+_ Spark Structured Streaming -> use spark to read the format as kafka.
+_ Jdbc Load of events and Venue details -> Load a SQL server Table for specific information.
 
-Markup :  ## What you will learn ?##
+## What you will learn ?
 
 * Design a kafka producer via pykafka.
 * How to design a case class for complex json.
 * A spark structure streaming read from kafka as a source.
 * How to do jdbc Load for writestream  through foreach batch.
 
-```
 Tech Used: Kafka, Spark
 Programming Language: Scala and python.
 
