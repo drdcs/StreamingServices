@@ -1,0 +1,7 @@
+.idea
+app-logs
+datasource/
+.DS_Store
+target/
+app-logs/
+test/

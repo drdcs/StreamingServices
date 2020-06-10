@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun May 24 23:49:18 PDT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0172-4a97-bdaf-0000113ad458 
+on database directory /Users/ddash/Documents/kafkadata/StreamingServices/metastore_db with class loader org.apache.spark.sql.hive.client.IsolatedClientLoader$$anon$1@632241f5 
+Loaded from file:/Users/ddash/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=/Users/ddash/Documents/kafkadata/StreamingServices
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14.6
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
