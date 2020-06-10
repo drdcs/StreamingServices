@@ -1,10 +1,10 @@
 # Spark Streaming example
 ## Use Case:
-
+```
 _Kafka producer -> reads the information from meetup group meetup.com
 _ Spark Structured Streaming -> use spark to read the format as kafka.
 _ Jdbc Load of events and Venue details -> Load a SQL server Table for specific information.
-
+```
 ## What you will learn ?
 
 * Design a kafka producer via pykafka.
@@ -19,7 +19,7 @@ Programming Language: Scala and python.
 The producer via pykafka (python) listens realtime data from a meetup group.
 The data in return is complex Json.
 
-```Snippet
+```json
 {
   "venue": {
     "venue_name": "16109 Nacogdoches Rd",
@@ -97,7 +97,7 @@ As you can see it's a nested json and we can use a Case class to read  with form
 
 schema below:
 
-```
+```scala
 
 case class MeetUpCaseClass(
                    venue: VenueDetails,
