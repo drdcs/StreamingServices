@@ -128,8 +128,23 @@ case class GroupTopics(urlkey: Option[String], topic_name: Option[String])
 
 ``` 
 
-### refer the page: src/main/scala/com/demo/schema
+refer the page: src/main/scala/com/demo/schema
 
 The data then finally loaded into the SQL Server through structured Streaming for each batch.
+
+The data write process is a micro batch process which load the table for eachbatch and the process can be triggered.
+
+```scala
+streamDF.writeStream.trigger(Trigger.ProcessingTime("2 seconds")).outputMode("update").foreachBatch{
+      (batchDF: DataFrame, batchId: Long) =>
+        batchDF.coalesce(2).select("venue.*").show()
+         val venue = batchDF.select($"venue.venue_name", $"venue.lon", $"venue.lat",$"venue.venue_id")
+         val event = batchDF.select($"event.event_name", $"event.event_id", $"event.time", $"event.event_url")
+        event.write.mode(SaveMode.Append)
+             .jdbc(jdbcUrl, jdbcTable, properties)
+        venue.write.mode(SaveMode.Append)
+          .jdbc(jdbcUrl, jdbcVenueTable, properties)
+    }.start()
+```
 
 
