@@ -1,12 +1,22 @@
 # Spark Streaming example
 ## Use Case:
 ```
-This is a Realtime data Reader from meetup group.
-The complex Json is being read by spark through a case class.
-Then section of data to move into sql server table.
+
+# Kafka producer -> reads the information from meetup group meetup.com
+# Spark Structured Streaming -> use spark to read the format as kafka.
+# Jdbc Load of events and Venue details -> Load a SQL server Table for specific information.
+
+## What you will learn ?
+
+# Design a kafka producer via pykafka.
+# How to design a case class for complex json.
+# A spark structure streaming read from kafka as a source.
+# How to do jdbc Load for writestream  through foreach batch.
 
 ```
-Tech Used: Kafka, Python, Spark, Scala
+Tech Used: Kafka, Spark
+Programming Language: Scala and python.
+
 
 The producer via pykafka (python) listens realtime data from a meetup group.
 The data in return is complex Json.
@@ -85,9 +95,40 @@ The data in return is complex Json.
   }
 }
 ```
-As you can see it's a nested json.
+As you can see it's a nested json and we can use a Case class to read  with format tie to the json.
 
-I want to read this via spark streaming as a Case class.
+schema below:
+
+```
+
+case class MeetUpCaseClass(
+                   venue: VenueDetails,
+                   visibility: Option[String],
+                   response: Option[String],
+                   guests: Option[String],
+                   member: MemberDetails,
+                   rsvp_id: Option[Long],
+                   mtime: Option[Long],
+                   event: EventDetails,
+                   group: GroupDetails
+                 )
+
+case class GroupDetails (group_topics: Array[GroupTopics],
+                         group_city: Option[String],
+                         group_country: Option[String],
+                         group_id: Long,
+                         group_name: Option[String],
+                         group_lon: Option[Float],
+                         group_urlname: Option[String],
+                         group_state: Option[String],
+                         group_lat: Option[String])
+
+case class VenueDetails (venue_name: Option[String], lon: Option[Float], lat: Option[Float], venue_id:Option[Long])
+case class MemberDetails (member_id: Long, photo: Option[String], member_name: Option[String] )
+case class  EventDetails (event_name: Option[String], event_id: Option[String], time: Long, event_url:String)
+case class GroupTopics(urlkey: Option[String], topic_name: Option[String])
+
+``` 
 
 ### refer the page: src/main/scala/com/demo/schema
 
